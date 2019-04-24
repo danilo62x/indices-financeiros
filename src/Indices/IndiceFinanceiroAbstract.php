@@ -26,13 +26,19 @@ abstract class IndiceFinanceiroAbstract
      */
     private $indice;
 
+    /**
+     * @var string
+     */
+    private $periodo;
+
     abstract public static function getCodigo(): int;
 
-    public function __construct(DateTime $data, float $percentual, float $indice = null)
+    public function __construct(DateTime $data, float $percentual, float $indice = null, string $periodo = null)
     {
         $this->data = $data;
         $this->percentual = $percentual;
         $this->indice = $indice;
+        $this->periodo = $periodo;
     }
 
     public function getNome(): string
@@ -53,5 +59,10 @@ abstract class IndiceFinanceiroAbstract
     public function getPercentual(): float
     {
         return $this->percentual;
+    }
+
+    public function getPeriodo(): string
+    {
+        return $this->periodo;
     }
 }

@@ -51,13 +51,14 @@ class DOMScrapperParser implements ParserInterface
                 break;
             }
 
-            $data = $this->getDateTimeObjFromMonthYearFormat($node->childNodes[1]->textContent);
-            $percentual = str_replace('%', '', $node->childNodes[5]->textContent);
+            $data = $this->getDateTimeObjFromMonthYearFormat($node->childNodes[0]->textContent);
+            $percentual = str_replace('%', '', $node->childNodes[4]->textContent);
             $percentual = (float)trim(str_replace(',', '.', $percentual));
-            $indice = (float)trim(str_replace(',', '.', $node->childNodes[3]->textContent));
+            $indice = (float)trim(str_replace(',', '.', $node->childNodes[2]->textContent));
+            $periodo = trim($node->childNodes[6]->textContent);
 
             /** @var IndiceFinanceiroAbstract $indiceObj */
-            $indiceObj = new $className($data, $percentual, $indice);
+            $indiceObj = new $className($data, $percentual, $indice, $periodo);
 
             $rows[$indiceObj::getCodigo()][] = $indiceObj;
         }

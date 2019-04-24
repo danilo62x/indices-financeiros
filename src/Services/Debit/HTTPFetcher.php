@@ -8,7 +8,7 @@ use Exception;
 
 class HTTPFetcher implements FetcherInterface
 {
-    const URL = 'http://www.debit.com.br/aluguel10.php';
+    const URL = 'https://www.debit.com.br/aluguel10.php';
 
     /**
      * @var int
